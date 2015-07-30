@@ -3,13 +3,13 @@
 .mdl-layout {
   .layout-transparent {
     //background: #333 !important;
-    background: url('../img/header-01.jpg') #93552b center / cover;
+    background: url('../img/header-04.jpg') /*#93552b*/ #907d67 center / cover;
     .mdl-layout__header,
     .mdl-layout__drawer-button {
       color: white;
     }
     .mdl-layout__content {
-      height: 100px;
+      height: 220px;
     }
   }
 }
