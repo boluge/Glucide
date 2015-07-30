@@ -12,12 +12,12 @@ class CreateMealsTable extends Migration
      */
     public function up()
     {
-      Schema::create('meals', function (Blueprint $table) {
-          $table->increments('id');
-          $table->string('name');
-          $table->integer('user_id');
-          $table->timestamps();
-      }
+        Schema::create('meals', function (Blueprint $table) {
+            $table->increments('id');
+            $table->string('name');
+            $table->integer('user_id');
+            $table->timestamps();
+        });
     }
 
     /**

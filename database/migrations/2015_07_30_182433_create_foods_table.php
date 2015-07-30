@@ -12,15 +12,15 @@ class CreateFoodsTable extends Migration
      */
     public function up()
     {
-      Schema::create('foods', function (Blueprint $table) {
-          $table->increments('id');
-          $table->string('name');
-          $table->string('slug');
-          $table->integer('category_id');
-          $table->boolean('weight');
-          $table->integer('glucide');
-          $table->timestamps();
-      }
+        Schema::create('foods', function (Blueprint $table) {
+            $table->increments('id');
+            $table->string('name');
+            $table->string('slug');
+            $table->integer('category_id');
+            $table->boolean('weight');
+            $table->integer('glucide');
+            $table->timestamps();
+        });
     }
 
     /**

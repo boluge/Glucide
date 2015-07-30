@@ -18,8 +18,8 @@ class CreateUsersTable extends Migration
             $table->string('email')->unique();
             $table->string('password', 60);
             $table->boolean('admin')->default(false);
-            $table->>decimal('bolus', 6, 3);
-            $table->>decimal('tengrams', 6, 3);
+            $table->decimal('bolus', 4, 2);
+            $table->decimal('tengrams', 4, 2);
             $table->rememberToken();
             $table->timestamps();
         });

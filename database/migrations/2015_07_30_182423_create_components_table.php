@@ -12,13 +12,13 @@ class CreateComponentsTable extends Migration
      */
     public function up()
     {
-      Schema::create('components', function (Blueprint $table) {
-          $table->increments('id');
-          $table->integer('meal_id');
-          $table->integer('food_id');
-          $table->integer('quantity');
-          $table->timestamps();
-      }
+        Schema::create('components', function (Blueprint $table) {
+            $table->increments('id');
+            $table->integer('meal_id');
+            $table->integer('food_id');
+            $table->integer('quantity');
+            $table->timestamps();
+        });
     }
 
     /**
