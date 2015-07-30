@@ -1,0 +1,16 @@
+{
+  "name": "glucide",
+  "version": "1.0.0",
+  "authors": [
+    "boluge <boluge@gmail.com>"
+  ],
+  "description": "Application pour l'insulino-therapie fonctionnelle",
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
