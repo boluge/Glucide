@@ -14,3 +14,44 @@ var elixir = require('laravel-elixir');
 elixir(function(mix) {
     mix.sass('app.scss');
 });
+
+
+var gulp = require('gulp');
+var sass = require('gulp-sass');
+var rename = require("gulp-rename");
+var please = require('gulp-pleeease');
+
+var SassOptions = {
+	errLogToConsole: true
+};
+
+var PleeeaseOptions = {
+	sourcemaps: false,
+	filters: true,
+	rem: ['14px'],
+	pseudoElements: true,
+	removeAllComments: true,
+	opacity: true,
+	minifier: true,
+	mqpacker: true,
+	autoprefixer: {
+		browsers: ['> 5%', 'last 10 versions', 'ie 9']
+	}
+};
+
+gulp.task('sass', function () {
+  gulp.src('./public/sass/*.scss')
+    .pipe( sass( SassOptions ))
+    .on( "error", function( e ) { console.error( e ); })
+    .pipe(gulp.dest('./public/css'));
+});
+
+gulp.task('css', ['sass'], function () {
+	return gulp.src('./public/sass/css/style.css')
+		.pipe( please( PleeeaseOptions ) )
+		.pipe(rename({
+			suffix: '.min',
+			extname: '.css'
+		}))
+		.pipe(gulp.dest('./public/css'));
+});
