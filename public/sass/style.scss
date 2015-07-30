@@ -1,1 +1,21 @@
 @import 'materialdesign';
+
+.mdl-layout {
+  .layout-transparent {
+    //background: #333 !important;
+    background: url('../img/header-01.jpg') #93552b center / cover;
+    .mdl-layout__header,
+    .mdl-layout__drawer-button {
+      color: white;
+    }
+    .mdl-layout__content {
+      height: 100px;
+    }
+  }
+}
+
+.container {
+  max-width: 1600px;
+  width: calc(100% - 16px);
+  margin: 0 auto;
+}
