@@ -11,6 +11,9 @@
           <header class="mdl-layout__header mdl-layout__header--transparent">
             <div class="mdl-layout__header-row">
               <!-- Title -->
+              <div class="mdl-layout__drawer-button">
+                  <i class="material-icons">menu</i>
+              </div>
               <span class="mdl-layout-title">@yield('title')</span>
               <!-- Add spacer, to align navigation to the right -->
               <div class="mdl-layout-spacer"></div>
