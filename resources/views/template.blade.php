@@ -11,7 +11,7 @@
             <div class="mdl-layout-icon"></div>
 
             <div class="mdl-layout__header-row">
-              <span class="mdl-layout-title">@yield('title')</span>
+              <h1 class="mdl-layout-title">@yield('title')</h1>
               <div class="mdl-layout-spacer"></div>
             </div>
 

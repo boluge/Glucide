@@ -12,6 +12,13 @@
   right: 60px;
 }
 
+.mdl-layout__drawer {
+  .mdl-layout-title {
+    background: unquote("rgb(#{$palette-light-blue-500})") !important;
+    text-align: center;
+    color: #fff;
+  }
+}
 
 
 

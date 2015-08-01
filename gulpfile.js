@@ -44,7 +44,7 @@ gulp.task('sass', function () {
   gulp.src('./public/sass/*.scss')
     .pipe( sass( SassOptions ))
     .on( "error", function( e ) { console.error( e ); })
-    .pipe(gulp.dest('./public/css'));
+    .pipe(gulp.dest('./public/sass/css/'));
 });
 
 gulp.task('copy', function () {
@@ -55,10 +55,6 @@ gulp.task('copy', function () {
 gulp.task('css', ['sass'], function () {
 	return gulp.src('./public/sass/css/style.css')
 		.pipe( please( PleeeaseOptions ) )
-		.pipe(rename({
-			suffix: '.min',
-			extname: '.css'
-		}))
 		.pipe(gulp.dest('./public/css'));
 });
 
