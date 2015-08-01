@@ -56,7 +56,7 @@ gulp.task('copy', function () {
 gulp.task('default', ['copy', 'sass'], function() {
 
     browserSync.init({
-        proxy: "localhost:8000"
+        proxy: "localhost/glucide/public"
     });
 
     gulp.watch("./public/sass/**/*.scss", ['sass']);
