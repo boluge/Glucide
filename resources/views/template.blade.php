@@ -7,7 +7,7 @@
     </head>
       <body>
         <div class="mdl-layout mdl-js-layout mdl-layout--overlay-drawer-button">
-          <header class="mdl-layout__header mdl-layout__header--transparent">
+          <header class="mdl-layout__header mdl-layout__header--img">
             <div class="mdl-layout-icon"></div>
 
             <div class="mdl-layout__header-row">
@@ -26,6 +26,7 @@
             <button class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--colored btn-add-header">
               <i class="material-icons">add</i>
             </button>
+
           </header>
           <div class="mdl-layout__drawer mdl-layout--small-screen-only">
             <span class="mdl-layout-title">@yield('title')</span>
@@ -36,7 +37,22 @@
               <a class="mdl-navigation__link" href="">Link</a>
             </nav>
           </div>
+          <main class="mdl-layout__content">
+            @yield('content')
+            <div class="mdl-layout-spacer"></div>
+            <footer class="mdl-mini-footer">
+              <div class="mdl-mini-footer__left-section">
+                <div class="mdl-logo">@yield('title')</div>
+                <ul class="mdl-mini-footer__link-list">
+                  <li><a href="#">Help</a></li>
+                  <li><a href="#">Privacy & Terms</a></li>
+                </ul>
+              </div>
+            </footer>
+          </main>
+
       </div>
+
       {!! Html::script('https://storage.googleapis.com/code.getmdl.io/1.0.2/material.min.js') !!}
     </body>
 </html>

@@ -1,43 +1,11 @@
 @import 'materialdesign';
 
-.mdl-layout__header--transparent {
-  background-color: unquote("rgb(#{$palette-light-blue-700})") !important;
-  background: url('../img/header1.jpg') center/cover;
-  position: relative;
-}
+/**
+* Layout
+**/
 
-.btn-add-header {
-  position: absolute;
-  bottom: -30px;
-  right: 60px;
-}
-
-.mdl-layout__drawer {
-  .mdl-layout-title {
-    background: unquote("rgb(#{$palette-light-blue-500})") !important;
-    text-align: center;
-    color: #fff;
-  }
-}
-
-
-
-@media screen and (max-width: 1024px){
-  .mdl-layout__header{
-    display: block;
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-  }
-
-  .mdl-layout__drawer-button {
-    color: rgb(255, 255, 255) !important;
-  }
-
-  .btn-add-header {
-    position: absolute;
-    bottom: -30px;
-    right: 30px;
-  }
-}
+@import 'layout/body';
+@import 'layout/header';
+//@import 'layout/content';
+//@import 'layout/sidebar';
+//@import 'layout/footer';

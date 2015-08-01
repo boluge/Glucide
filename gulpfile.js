@@ -44,7 +44,8 @@ gulp.task('sass', function () {
   gulp.src('./public/sass/*.scss')
     .pipe( sass( SassOptions ))
     .on( "error", function( e ) { console.error( e ); })
-    .pipe(gulp.dest('./public/sass/css/'));
+    .pipe( please( PleeeaseOptions ) )
+    .pipe(gulp.dest('./public/css'));
 });
 
 gulp.task('copy', function () {
@@ -52,18 +53,12 @@ gulp.task('copy', function () {
     .pipe(gulp.dest('./public/css/fonts'));
 });
 
-gulp.task('css', ['sass'], function () {
-	return gulp.src('./public/sass/css/style.css')
-		.pipe( please( PleeeaseOptions ) )
-		.pipe(gulp.dest('./public/css'));
-});
-
-gulp.task('serve', ['css'], function() {
+gulp.task('default', ['copy', 'sass'], function() {
 
     browserSync.init({
         proxy: "localhost/glucide/public"
     });
 
-    gulp.watch("./public/sass/*.scss", ['css']);
+    gulp.watch("./public/sass/**/*.scss", ['sass']);
     gulp.watch(["./app/**/*.php", "./resources/**/*.php", "./public/css/*.css" ]).on('change', browserSync.reload);
 });

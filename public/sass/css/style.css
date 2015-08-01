@@ -9085,6 +9085,22 @@ _:-ms-input-placeholder, :root .mdl-slider.mdl-slider.is-upgraded {
     .mdl-grid--no-spacing > .mdl-cell--12-col-desktop.mdl-cell--12-col-desktop {
       width: 100%; } }
 
+/**
+* Layout
+**/
+/**
+*
+* Body
+*
+**/
+body {
+  background: rgb(238,238,238); }
+
+/**
+*
+* Header
+*
+**/
 .mdl-layout__header--transparent {
   background-color: rgb(2,136,209) !important;
   background: url('../img/header1.jpg') center/cover;
@@ -9092,7 +9108,7 @@ _:-ms-input-placeholder, :root .mdl-slider.mdl-slider.is-upgraded {
 
 .btn-add-header {
   position: absolute;
-  bottom: -30px;
+  bottom: -28px;
   right: 60px; }
 
 .mdl-layout__drawer .mdl-layout-title {
