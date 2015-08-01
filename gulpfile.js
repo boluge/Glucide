@@ -20,6 +20,7 @@ var gulp = require('gulp');
 var sass = require('gulp-sass');
 var rename = require("gulp-rename");
 var please = require('gulp-pleeease');
+var browserSync = require('browser-sync').create();
 
 var SassOptions = {
 	errLogToConsole: true
@@ -46,6 +47,11 @@ gulp.task('sass', function () {
     .pipe(gulp.dest('./public/css'));
 });
 
+gulp.task('copy', function () {
+  return gulp.src('./bower_components/material-design-icons/iconfont/*.*')
+    .pipe(gulp.dest('./public/css/fonts'));
+});
+
 gulp.task('css', ['sass'], function () {
 	return gulp.src('./public/sass/css/style.css')
 		.pipe( please( PleeeaseOptions ) )
@@ -54,4 +60,14 @@ gulp.task('css', ['sass'], function () {
 			extname: '.css'
 		}))
 		.pipe(gulp.dest('./public/css'));
+});
+
+gulp.task('serve', ['css'], function() {
+
+    browserSync.init({
+        proxy: "localhost/glucide/public"
+    });
+
+    gulp.watch("./public/sass/*.scss", ['css']);
+    gulp.watch(["./app/**/*.php", "./resources/**/*.php", "./public/css/*.css" ]).on('change', browserSync.reload);
 });

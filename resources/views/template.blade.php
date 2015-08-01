@@ -3,30 +3,31 @@
     <head>
         <title>@yield('title')</title>
         {!! Html::style('css/style.css') !!}
+        {!! Html::style('https://fonts.googleapis.com/icon?family=Material+Icons') !!}
     </head>
-    <body>
-      <!-- Always shows a header, even in smaller screens. -->
-      <div class="mdl-layout mdl-js-layout">
-        <div class="layout-transparent mdl-layout mdl-js-layout">
+      <body>
+        <div class="mdl-layout mdl-js-layout mdl-layout--overlay-drawer-button">
           <header class="mdl-layout__header mdl-layout__header--transparent">
+            <div class="mdl-layout-icon"></div>
+
             <div class="mdl-layout__header-row">
-              <!-- Title -->
-              <div class="mdl-layout__drawer-button">
-                  <i class="material-icons">menu</i>
-              </div>
               <span class="mdl-layout-title">@yield('title')</span>
-              <!-- Add spacer, to align navigation to the right -->
               <div class="mdl-layout-spacer"></div>
-              <!-- Navigation -->
+            </div>
+
+            <div class="mdl-layout__header-row mdl-layout--large-screen-only">
               <nav class="mdl-navigation">
-                <a class="mdl-navigation__link" href="">Link</a>
-                <a class="mdl-navigation__link" href="">Link</a>
-                <a class="mdl-navigation__link" href="">Link</a>
-                <a class="mdl-navigation__link" href="">Link</a>
+                <a class="mdl-navigation__link" href="#">Nav link 1</a>
+                <a class="mdl-navigation__link" href="#">Nav link 2</a>
+                <a class="mdl-navigation__link" href="#">Nav link 3</a>
               </nav>
             </div>
+
+            <button class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--colored btn-add-header">
+              <i class="material-icons">add</i>
+            </button>
           </header>
-          <div class="mdl-layout__drawer">
+          <div class="mdl-layout__drawer mdl-layout--small-screen-only">
             <span class="mdl-layout-title">@yield('title')</span>
             <nav class="mdl-navigation">
               <a class="mdl-navigation__link" href="">Link</a>
@@ -35,12 +36,7 @@
               <a class="mdl-navigation__link" href="">Link</a>
             </nav>
           </div>
-          <main class="mdl-layout__content">
-            @yield('header')
-          </main>
-        </div>
-        <div class="container">
-          @yield('content')
-        </div>
+      </div>
+      {!! Html::script('https://storage.googleapis.com/code.getmdl.io/1.0.2/material.min.js') !!}
     </body>
 </html>
