@@ -38,7 +38,11 @@
             </nav>
           </div>
           <main class="mdl-layout__content">
-            @yield('content')
+
+            <div class="page-content">
+              @yield('content')
+            </div>
+
             <div class="mdl-layout-spacer"></div>
             <footer class="mdl-mini-footer">
               <div class="mdl-mini-footer__left-section">
