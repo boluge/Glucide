@@ -1,9 +1,12 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>@yield('title')</title>
-        {!! Html::style('css/style.css') !!}
-        {!! Html::style('https://fonts.googleapis.com/icon?family=Material+Icons') !!}
+      <title>@yield('title')</title>
+      <meta charset="utf-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      {!! Html::style('css/style.css') !!}
+      {!! Html::style('https://fonts.googleapis.com/icon?family=Material+Icons') !!}
     </head>
       <body>
         <div class="mdl-layout mdl-js-layout mdl-layout--overlay-drawer-button">
