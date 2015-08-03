@@ -146,6 +146,7 @@ return [
 
         Barryvdh\Debugbar\ServiceProvider::class,
         Collective\Html\HtmlServiceProvider::class,
+        Bestmomo\Scafold\ScafoldServiceProvider::class,
 
     ],
 
