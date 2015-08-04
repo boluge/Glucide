@@ -5,10 +5,15 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
+use Illuminate\Contracts\Auth\Guard;
 use App\Http\Controllers\Controller;
 
 class MealController extends Controller
 {
+    public function __construct(Guard $auth)
+    {
+        $this->middleware('auth');
+    }
     /**
      * Display a listing of the resource.
      *
@@ -16,7 +21,7 @@ class MealController extends Controller
      */
     public function index()
     {
-        //
+        return view('meals/index');
     }
 
     /**
