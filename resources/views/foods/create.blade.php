@@ -5,7 +5,7 @@
 @endsection
 
 @section('content')
-    <form method="post" action="{{ route('food.store') }}">
+    <form method="post" action="{{ isset($food->name) ? route('foodUpdate',['id' => $food->id]) : route('food.store') }}">
         <input type="hidden" name="_token" value="{{ csrf_token() }}">
         <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label ">
             <input class="mdl-textfield__input" type="text" id="name" name="name" value="{{ $food->name or '' }}"/>

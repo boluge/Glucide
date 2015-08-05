@@ -17,3 +17,8 @@ Route::get('/', ['as'=>'home', function () {
 
 // Foods
 Route::resource('food', 'Admin\FoodController');
+Route::post('food/{id}/update', [
+        'as'    => 'foodUpdate',
+        'uses'  => 'Admin\FoodController@update'
+    ]
+);

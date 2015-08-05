@@ -79,8 +79,6 @@ class FoodController extends Controller
     public function edit($id)
     {
         $food = Foods::find($id);
-        //var_dump($food);
-        //die;
         return view('foods/create')->with('food',$food);
     }
 
@@ -93,7 +91,22 @@ class FoodController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $food = Foods::find($id);
+        $parameters = $request->except(['_token']);
+
+        if( empty($parameters['slug']) ){
+            $parameters['slug'] = Str::slug($parameters['name']);
+        }
+
+        $food->name = $parameters['name'];
+        $food->slug = $parameters['slug'];
+        $food->category_id = $parameters['category_id'];
+        $food->weight = $parameters['weight'];
+        $food->sugar = $parameters['sugar'];
+
+        $food->save();
+
+        return redirect()->route('food.index')->with('success', 'Item was updated !');
     }
 
     /**
