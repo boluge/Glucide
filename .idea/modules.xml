@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/glucide.iml" filepath="$PROJECT_DIR$/.idea/glucide.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/startglucide.iml" filepath="$PROJECT_DIR$/.idea/startglucide.iml" />
     </modules>
   </component>
 </project>

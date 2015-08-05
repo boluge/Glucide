@@ -1,10 +1,10 @@
 {
   "name": "glucide",
-  "version": "1.0.0",
+  "version": "1.0.2",
   "authors": [
-    "boluge <boluge@gmail.com>"
+    "Stephane Deluce <boluge@gmail.com>"
   ],
-  "description": "Application pour l'insulino-therapie fonctionnelle",
+  "description": "Application d'aide pour utiliser l'insulinothérapie fonctionnelle",
   "license": "MIT",
   "ignore": [
     "**/.*",
@@ -14,7 +14,6 @@
     "tests"
   ],
   "dependencies": {
-    "material-design-lite": "~1.0.2",
-    "material-design-icons": "~2.0.0"
+    "material-design-lite": "~1.0.2"
   }
 }
