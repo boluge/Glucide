@@ -14,3 +14,49 @@ var elixir = require('laravel-elixir');
 elixir(function(mix) {
     mix.sass('app.scss');
 });
+
+var gulp = require('gulp');
+var sass = require('gulp-sass');
+var rename = require("gulp-rename");
+var please = require('gulp-pleeease');
+var browserSync = require('browser-sync').create();
+
+var SassOptions = {
+    errLogToConsole: true
+};
+
+var PleeeaseOptions = {
+	sourcemaps: false,
+	filters: true,
+	rem: ['14px'],
+	pseudoElements: true,
+	removeAllComments: true,
+	opacity: true,
+	minifier: true,
+    mqpacker: true,
+	autoprefixer: {
+		browsers: ['> 5%', 'last 8 versions', 'ie 9']
+	}
+};
+
+    gulp.task('sass', function () {
+        gulp.src('./public/css/sass/*.scss')
+            .pipe( sass( SassOptions ))
+            .on( "error", function( e ) { console.error( e ); })
+            .pipe( please( PleeeaseOptions ) )
+            .pipe(gulp.dest('./public/css'));
+    });
+
+    gulp.task('copy', function () {
+          return gulp.src('./resources/components/material-design-icons/iconfont/*.*')
+                .pipe(gulp.dest('./public/css/fonts'));
+    });
+
+    gulp.task('default', ['sass'], function() {
+        browserSync.init({
+            proxy: "localhost/laravel/glucide/public"
+        });
+
+        gulp.watch("./public/css/sass/**/*.scss", ['sass']);
+        gulp.watch(["./app/**/*.php", "./resources/**/*.php", "./public/css/*.css" ]).on('change', browserSync.reload);
+    });
