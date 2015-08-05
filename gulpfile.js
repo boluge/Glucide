@@ -18,6 +18,9 @@ elixir(function(mix) {
 var gulp = require('gulp');
 var sass = require('gulp-sass');
 var please = require('gulp-pleeease');
+var jshint = require("gulp-jshint");
+var concat = require("gulp-concat")
+var uglify = require("gulp-uglify")
 var browserSync = require('browser-sync').create();
 
 var SassOptions = {
@@ -38,6 +41,17 @@ var PleeeaseOptions = {
 	}
 };
 
+var uglifySrc = [
+    /** Modernizr */
+    "./resources/components/modernizr/modernizr.js",
+    /** FastClick */
+    "./resources/components/fastclick/lib/fastclick.js",
+    /* MDL */
+    "./resources/components/material-design-lite/material.js",
+    /** Page scripts */
+    "./public/js/app/app.js"
+];
+
     gulp.task('sass', function () {
         gulp.src('./public/css/sass/*.scss')
             .pipe( sass( SassOptions ))
@@ -51,11 +65,26 @@ var PleeeaseOptions = {
                 .pipe(gulp.dest('./public/css/fonts'));
     });
 
-    gulp.task('default', ['sass'], function() {
+    gulp.task( 'jshint', function () {
+        /** Test all `js` files exclude those in the `lib` folder */
+        return gulp.src( "./public/js/app/*.js" )
+            .pipe( jshint() )
+            .pipe(jshint.reporter('default', { verbose: true }));
+    });
+
+gulp.task( 'uglify', ['jshint'],function() {
+    return gulp.src( uglifySrc )
+        .pipe( concat( "app.min.js" ) )
+        .pipe( uglify() )
+        .pipe( gulp.dest('./public/js') );
+});
+
+    gulp.task('default', ['sass', 'uglify'], function() {
         browserSync.init({
             proxy: "localhost/laravel/glucide/public"
         });
 
         gulp.watch("./public/css/sass/**/*.scss", ['sass']);
-        gulp.watch(["./app/**/*.php", "./resources/**/*.php", "./public/css/*.css" ]).on('change', browserSync.reload);
+        gulp.watch("./public/js/app/*.js", ['uglify'])
+        gulp.watch(["./app/**/*.php", "./resources/views/**/*.php", "./public/css/*.css", "./public/js/*.js" ]).on('change', browserSync.reload);
     });

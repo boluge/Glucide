@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Foods;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Str;
 
 class FoodController extends Controller
 {
@@ -16,7 +18,9 @@ class FoodController extends Controller
      */
     public function index()
     {
-        //
+        $foods = Foods::all();
+        $foods = $foods->sortBy('name');
+        return view('foods/index')->with('foods', $foods);
     }
 
     /**
@@ -37,7 +41,22 @@ class FoodController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $parameters = $request->except(['_token']);
+
+        if( empty($parameters['slug']) ){
+            $parameters['slug'] = Str::slug($parameters['name']);
+        }
+
+        $food = new Foods();
+        $food->name = $parameters['name'];
+        $food->slug = $parameters['slug'];
+        $food->category_id = $parameters['category_id'];
+        $food->weight = $parameters['weight'];
+        $food->sugar = $parameters['sugar'];
+
+        $food->save();
+
+        return redirect()->route('food.index')->with('success', 'Item was added !');
     }
 
     /**
@@ -59,7 +78,10 @@ class FoodController extends Controller
      */
     public function edit($id)
     {
-        //
+        $food = Foods::find($id);
+        //var_dump($food);
+        //die;
+        return view('foods/create')->with('food',$food);
     }
 
     /**
