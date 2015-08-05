@@ -11,6 +11,9 @@
 |
 */
 
-Route::get('/', function () {
+Route::get('/', ['as'=>'home', function () {
     return view('welcome');
-});
+}]);
+
+// Foods
+Route::resource('food', 'Admin\FoodController');
