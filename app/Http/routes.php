@@ -17,8 +17,9 @@ Route::get('/', ['as'=>'home', function () {
 
 // Foods
 Route::resource('food', 'Admin\FoodController');
-Route::post('food/{id}/update', [
-        'as'    => 'foodUpdate',
-        'uses'  => 'Admin\FoodController@update'
-    ]
-);
+Route::get('food', [ 'as' => 'food.index', 'uses' => 'Admin\FoodController@index' ]);
+Route::get('food/create', [ 'as' => 'food.create', 'uses' => 'Admin\FoodController@create' ]);
+Route::post('food', [ 'as' => 'food.store', 'uses' => 'Admin\FoodController@store' ]);
+Route::get('food/{id}/edit', [ 'as' => 'food.edit', 'uses' => 'Admin\FoodController@edit' ]);
+Route::post('food/{id}/update', [ 'as' => 'food.update', 'uses' => 'Admin\FoodController@update' ]);
+Route::post('food/{id}/delete', [ 'as' => 'food.delete', 'uses' => 'Admin\FoodController@destroy' ]);

@@ -16,7 +16,6 @@
             <th class="mdl-data-table__cell--non-numeric">Category</th>
             <th>Weight</th>
             <th>Sugar</th>
-            <th>Delete</th>
             <th>Edit</th>
         </tr>
         </thead>
@@ -34,11 +33,6 @@
                         @endif
                     </td>
                     <td>{{ $food->sugar }} gr</td>
-                    <td>
-                        <a href="{{ route('food.edit', ['id' => $food->id]) }}">
-                            <i class="material-icons">delete</i>
-                        </a>
-                    </td>
                     <td>
                         <a href="{{ route('food.edit', ['id' => $food->id]) }}">
                             <i class="material-icons">create</i>
