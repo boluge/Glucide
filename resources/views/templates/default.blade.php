@@ -1,5 +1,4 @@
 @include('../includes/header')
-@include('../includes/navigation')
 
     @yield('content')
 

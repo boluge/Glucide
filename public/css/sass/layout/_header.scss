@@ -1,0 +1,7 @@
+.layout-transparent {
+  background: url('../img/background.jpg') center / cover;
+  .mdl-layout__header, .mdl-layout__drawer-button, .home-link {
+    color: white;
+    text-decoration: none;
+  }
+}

@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Str;
 
 class FoodController extends Controller
@@ -41,6 +42,22 @@ class FoodController extends Controller
      */
     public function store(Request $request)
     {
+        $validator = Validator::make($request->all(), [
+            'name' => 'required|unique:foods|max:255',
+            'slug' => 'max:255',
+            'weight' => 'required|boolean',
+            'sugar' => 'required|numeric',
+        ]);
+
+        $messages = [
+            'name.required' => 'We need to know your e-mail address!',
+        ];
+
+        if ($validator->fails()) {
+            return redirect()->route('food.create')
+                ->withErrors($validator)
+                ->withInput();
+        }
         $parameters = $request->except(['_token']);
 
         if( empty($parameters['slug']) ){
