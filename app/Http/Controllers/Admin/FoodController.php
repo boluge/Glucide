@@ -7,8 +7,10 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Str;
+use Illuminate\Contracts\Pagination;
 
 class FoodController extends Controller
 {
@@ -19,8 +21,11 @@ class FoodController extends Controller
      */
     public function index()
     {
-        $foods = Foods::all();
-        $foods = $foods->sortBy('name');
+        $foods = Foods::all(['name', 'category_id', 'weight', 'sugar'])->sortBy('name');
+        //$foods = DB::table('foods')->paginate(2);
+        //$foods = $foods->shortby('name');
+        //$foods = $foods->paginate(2);
+        $foods = $foods;
         return view('foods/index')->with('foods', $foods);
     }
 
@@ -123,7 +128,7 @@ class FoodController extends Controller
 
         $food->save();
 
-        return redirect()->route('food.index')->with('success', 'Item was updated !');
+        return redirect()->route('food.index')->with('success', 'Food was updated !');
     }
 
     /**
@@ -137,6 +142,6 @@ class FoodController extends Controller
         $food = Foods::find($id);
         $food->delete();
 
-        return redirect()->route('food.index')->with('success', 'Item was updated !');
+        return redirect()->route('food.index')->with('success', 'Food was deleted !');
     }
 }

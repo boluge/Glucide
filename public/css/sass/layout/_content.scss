@@ -11,6 +11,9 @@
   .relative-pos {
     position: relative;
   }
+  .list-foods {
+    padding-top: 20px;
+  }
   .table-align-left {
     td, th {
       text-align: left;
@@ -25,6 +28,7 @@
   }
   .card-notice {
     border-radius: 2px;
+    padding: 15px;
     background: unquote("rgba(#{$palette-light-blue-100}, 0.87)");
     li {
       color: unquote("rgb(#{$palette-light-blue-700})");
@@ -34,6 +38,12 @@
       background: unquote("rgba(#{$palette-red-100}, 0.87)");
       li {
         color: unquote("rgb(#{$palette-red-700})");
+      }
+    }
+    &.card-notice-success {
+      background: unquote("rgba(#{$palette-light-green-100}, 0.87)");
+      li {
+        color: unquote("rgb(#{$palette-light-green-700})");
       }
     }
   }

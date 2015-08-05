@@ -15,7 +15,6 @@
                 </ul>
             </div>
         </div>
-
     @endif
     <div class="mdl-grid">
         <div class="mdl-card mdl-shadow--2dp mdl-cell mdl-cell--8-col mdl-cell--4-col-tablet">
