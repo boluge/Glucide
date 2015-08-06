@@ -17,7 +17,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js"></script>
 </head>
 <body>
-    <!--[if lt IE 8]> <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p> <![endif]-->
+<!--[if lt IE 8]> <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p> <![endif]-->
     <div class="layout-transparent mdl-layout mdl-js-layout">
         <header class="mdl-layout__header mdl-layout__header--transparent">
             <div class="mdl-layout__header-row">
@@ -29,6 +29,8 @@
                 <nav class="mdl-navigation mdl-cell--hide-tablet mdl-cell--hide-tablet mdl-cell--hide-phone">
                     @include('../includes/navigation')
                 </nav>
+                @include('../includes/admin')
+                @include('../includes/usermenu')
             </div>
         </header>
         <div class="mdl-layout__drawer">

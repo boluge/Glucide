@@ -2,13 +2,23 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Categories;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Str;
+use Illuminate\Contracts\Pagination;
 
 class CategoryController extends Controller
 {
+
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     /**
      * Display a listing of the resource.
      *
@@ -16,7 +26,16 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        //
+        $categories = DB::table('categories')->get();
+
+        /*
+           SELECT a.id,a.catagory_name,b.id as sucid,b.subcatagory_name
+            FROM category a
+            LEFT JOIN subcategory b ON a.id = b.catagory_id
+            WHERE a.active='y' AND b.active='y'
+            ORDER BY a.priority,b.category_id DESC
+        */
+        return view('foodcategories/index')->with('categories', $categories);
     }
 
     /**
@@ -26,7 +45,8 @@ class CategoryController extends Controller
      */
     public function create()
     {
-        //
+        $parents = Categories::all(['id', 'name']);
+        return view('foodcategories/create')->with('parents', $parents);
     }
 
     /**
@@ -37,7 +57,31 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validator = Validator::make($request->all(), [
+            'name' => 'required|unique:foods|max:255',
+            'slug' => 'max:255'
+        ]);
+
+        if ($validator->fails()) {
+            return redirect()->route('category.create')
+                ->withErrors($validator)
+                ->withInput();
+        }
+
+        $parameters = $request->except(['_token']);
+
+        if( empty($parameters['slug']) ){
+            $parameters['slug'] = Str::slug($parameters['name']);
+        }
+
+        $category = new Categories();
+        $category->name = $parameters['name'];
+        $category->slug = $parameters['slug'];
+        $category->parent_id = ($parameters['parent_id'] == 0)? NULL : $parameters['parent_id'];
+
+        $category->save();
+
+        return redirect()->route('category.index')->with('success', 'Item was added !');
     }
 
     /**

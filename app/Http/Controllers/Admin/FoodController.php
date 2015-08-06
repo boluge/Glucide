@@ -7,13 +7,17 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
-use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Str;
 use Illuminate\Contracts\Pagination;
 
 class FoodController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -25,7 +29,6 @@ class FoodController extends Controller
         //$foods = DB::table('foods')->paginate(2);
         //$foods = $foods->shortby('name');
         //$foods = $foods->paginate(2);
-        $foods = $foods;
         return view('foods/index')->with('foods', $foods);
     }
 
@@ -53,10 +56,6 @@ class FoodController extends Controller
             'weight' => 'required|boolean',
             'sugar' => 'required|numeric',
         ]);
-
-        $messages = [
-            'name.required' => 'We need to know your e-mail address!',
-        ];
 
         if ($validator->fails()) {
             return redirect()->route('food.create')
