@@ -21,7 +21,7 @@ class FoodController extends Controller
      */
     public function index()
     {
-        $foods = Foods::all(['name', 'category_id', 'weight', 'sugar'])->sortBy('name');
+        $foods = Foods::all(['id', 'name', 'category_id', 'weight', 'sugar'])->sortBy('name');
         //$foods = DB::table('foods')->paginate(2);
         //$foods = $foods->shortby('name');
         //$foods = $foods->paginate(2);
