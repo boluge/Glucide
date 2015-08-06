@@ -10,7 +10,8 @@
   .mdl-layout__header {
     display: block;
     &.mdl-layout__header--transparent {
-      background-color: unquote("rgba(#{$palette-grey-800}, 0.4)");
+      background-color: unquote("rgba(#{$palette-grey-800}, 0.3)");
+      @include shadow-3dp();
     }
   }
   .mdl-layout__content {

@@ -7,7 +7,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <title>Glucide | @yield('title')</title>
-    <link rel="shortcut icon" href="{{ URL::asset('img/favicon.ico') }}" type="image/x-icon">
+    @include('../includes/favicon')
     <meta name="description" content="en">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
