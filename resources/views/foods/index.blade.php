@@ -24,10 +24,10 @@
                 <table class="mdl-data-table mdl-js-data-table full-width table-align-left">
                     <thead>
                     <tr>
-                        <th>Id</th>
+                        <th class="mdl-cell--hide-phone">Id</th>
                         <th class="mdl-data-table__cell--non-numeric">Name</th>
-                        <th class="mdl-data-table__cell--non-numeric">Category</th>
-                        <th>Weight</th>
+                        <th class="mdl-data-table__cell--non-numeric mdl-cell--hide-phone">Category</th>
+                        <th class="mdl-cell--hide-phone">Weight</th>
                         <th>Sugar</th>
                         <th>Edit</th>
                     </tr>
@@ -35,10 +35,10 @@
                     <tbody>
                         @foreach($foods as $food)
                             <tr>
-                                <td>{{ $food->id }}</td>
+                                <td class="mdl-cell--hide-phone">{{ $food->id }}</td>
                                 <td><a class="name-edit-link" href="{{ route('food.edit', ['id' => $food->id]) }}">{{ $food->name }}</a></td>
-                                <td>{{ $food->category_id }}</td>
-                                <td>
+                                <td class="mdl-cell--hide-phone">{{ $food->category_id }}</td>
+                                <td class="mdl-cell--hide-phone">
                                     @if( $food->weight == 1)
                                         <i class="material-icons mdl-color-text--light-green-400">check</i>
                                     @else
@@ -56,6 +56,11 @@
                     </tbody>
                 </table>
                 <!--!! $foods->render() !!-->
+            </div>
+            <div class="mdl-card__actions mdl-card--border">
+                <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
+                    All categories
+                </a>
             </div>
         </div>
     </div>

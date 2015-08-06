@@ -7,6 +7,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <title>Glucide | @yield('title')</title>
+    <link rel="shortcut icon" href="{{ URL::asset('img/favicon.ico') }}" type="image/x-icon">
     <meta name="description" content="en">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -25,13 +26,13 @@
                 <!-- Add spacer, to align navigation to the right -->
                 <div class="mdl-layout-spacer"></div>
                 <!-- Navigation -->
-                <nav class="mdl-navigation">
+                <nav class="mdl-navigation mdl-cell--hide-tablet mdl-cell--hide-tablet mdl-cell--hide-phone">
                     @include('../includes/navigation')
                 </nav>
             </div>
         </header>
         <div class="mdl-layout__drawer">
-            <span class="mdl-layout-title">Glucide</span>
+            <span class="mdl-layout-title mdl-color--accent mdl-color-text--grey-50">Glucide</span>
             <nav class="mdl-navigation">
                 @include('../includes/navigation')
             </nav>

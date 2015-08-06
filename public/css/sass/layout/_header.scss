@@ -1,7 +1,19 @@
 .layout-transparent {
-  background: url('../img/background.jpg') center / cover;
+  background: url('../img/backgroud-flower.jpg') center / cover;
   .mdl-layout__header, .mdl-layout__drawer-button, .home-link {
     color: white;
     text-decoration: none;
+  }
+}
+
+@media screen and (max-width: #{$layout-screen-size-threshold}) {
+  .mdl-layout__header {
+    display: block;
+    &.mdl-layout__header--transparent {
+      background-color: unquote("rgba(#{$palette-grey-800}, 0.4)");
+    }
+  }
+  .mdl-layout__content {
+    padding-top: 20px;
   }
 }

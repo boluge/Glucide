@@ -17,11 +17,6 @@
         </div>
     @endif
     <div class="mdl-grid">
-        <div class="mdl-card mdl-shadow--2dp mdl-cell mdl-cell--8-col mdl-cell--4-col-tablet">
-            <div class="mdl-card__title">
-                <h2 class="mdl-card__title-text">Explains</h2>
-            </div>
-        </div>
         <div class="mdl-card mdl-shadow--2dp mdl-cell mdl-cell--4-col mdl-cell--4-col-tablet">
             <div class="mdl-card__title">
                 <h2 class="mdl-card__title-text">{{ isset($food->id) ? 'Edit a food' : 'Create a new food' }}</h2>
@@ -73,6 +68,11 @@
                     </a>
                 </div>
             @endif
+        </div>
+        <div class="mdl-card mdl-shadow--2dp mdl-cell mdl-cell--8-col mdl-cell--4-col-tablet">
+            <div class="mdl-card__title">
+                <h2 class="mdl-card__title-text">Explains</h2>
+            </div>
         </div>
     </div>
 
