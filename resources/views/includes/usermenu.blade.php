@@ -8,7 +8,7 @@
 
     <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect user-menu" for="user-menu-lower-right">
         <li class="mdl-menu__item">
-            <a href="">
+            <a href="{{ route('profile', ['id' => Auth::user()->id]) }}">
                 Edit Profile & Settings
             </a>
         </li>
