@@ -35,10 +35,10 @@
                     <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
                         <label class="mdl-label" for="category_id">Food Category</label>
                         <select name="category_id" id="category_id">
-                            <option value="1" {{ isset($food->id) ? ($food->category_id == 1 ? 'selected="selected"' : '') : '' }}>Un</option>
-                            <option value="2" {{ isset($food->id) ? ($food->category_id == 2 ? 'selected="selected"' : '') : '' }}>Deux</option>
-                            <option value="3" {{ isset($food->id) ? ($food->category_id == 3 ? 'selected="selected"' : '') : '' }}>Trois</option>
-                            <option value="4" {{ isset($food->id) ? ($food->category_id == 4 ? 'selected="selected"' : '') : '' }}>Quatre</option>
+                            <option value="0" {{ isset($food->id) ? ($food->category_id == 1 ? 'selected="selected"' : '') : '' }}>select a category</option>
+                            @foreach($categories as $category)
+                                <option value="{{ $category->id }}" {{ isset($food->id) ? ($food->category_id == $category->id ? 'selected="selected"' : '') : '' }}>{{ $category->name }}</option>
+                            @endforeach
                         </select>
                     </div>
                     <div class="mdl-textfield mdl-js-textfield">

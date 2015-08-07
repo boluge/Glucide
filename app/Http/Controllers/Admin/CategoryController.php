@@ -46,7 +46,7 @@ class CategoryController extends Controller
     public function create()
     {
         $parents = Categories::all(['id', 'name']);
-        return view('foodcategories/create')->with('parents', $parents);
+        return view('foodcategories/create');
     }
 
     /**
@@ -77,7 +77,6 @@ class CategoryController extends Controller
         $category = new Categories();
         $category->name = $parameters['name'];
         $category->slug = $parameters['slug'];
-        $category->parent_id = ($parameters['parent_id'] == 0)? NULL : $parameters['parent_id'];
 
         $category->save();
 
@@ -103,7 +102,8 @@ class CategoryController extends Controller
      */
     public function edit($id)
     {
-        //
+        $category = Categories::find($id);
+        return view('foodcategories/create')->with('category', $category);
     }
 
     /**
@@ -115,7 +115,29 @@ class CategoryController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $category = Categories::find($id);
+        $parameters = $request->except(['_token']);
+
+        $validator = Validator::make($request->all(), [
+            'name' => 'required|unique:foods|max:255'
+        ]);
+
+        if ($validator->fails()) {
+            return redirect()->route('food.create')
+                ->withErrors($validator)
+                ->withInput();
+        }
+
+        if( empty($parameters['slug']) ){
+            $parameters['slug'] = Str::slug($parameters['name']);
+        }
+
+        $category->name = $parameters['name'];
+        $category->slug = $parameters['slug'];
+
+        $category->save();
+
+        return redirect()->route('category.index')->with('success', 'Category was updated !');
     }
 
     /**

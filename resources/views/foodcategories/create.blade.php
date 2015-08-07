@@ -28,22 +28,8 @@
                         <input class="mdl-textfield__input" type="text" id="name" name="name" value="{{ $category->name or '' }}"/>
                         <label class="mdl-textfield__label" for="name">Category Name</label>
                     </div>
-                    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                        <input class="mdl-textfield__input" type="text" id="slug" name="slug" value="{{ $category->slug or '' }}"/>
-                        <label class="mdl-textfield__label" for="slug">Category Slug</label>
-                    </div>
-                    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                        <input class="mdl-textfield__input" type="number" id="parent_id" name="parent_id" value="{{ $category->parent_id or '' }}"/>
-                        <label class="mdl-textfield__label" for="slug">Parent Id</label>
-                        <select name="parent_id" id="parent_id">
-                            <option value="0">Select a Parent</option>
-                            @foreach($parents as $parent)
-                                <option value="{{ $parent->id }}">{{ $parent->name }}</option>
-                            @endforeach
-                        </select>
-                    </div>
                     <button type="submit" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">
-                        {{ isset($category->id) ? 'Update this food' : 'Register this food' }}
+                        {{ isset($category->id) ? 'Update this category' : 'Register this category' }}
                     </button>
                 </form>
             </div>
@@ -61,7 +47,4 @@
             </div>
         </div>
     </div>
-
-
-
 @endsection

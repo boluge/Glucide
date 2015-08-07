@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Str;
 use Illuminate\Contracts\Pagination;
@@ -39,7 +40,8 @@ class FoodController extends Controller
      */
     public function create()
     {
-        return view('foods/create');
+        $categories = DB::table('categories')->get();
+        return view('foods/create')->with('categories', $categories);
     }
 
     /**
@@ -89,7 +91,8 @@ class FoodController extends Controller
     public function edit($id)
     {
         $food = Foods::find($id);
-        return view('foods/create')->with('food',$food);
+        $categories = DB::table('categories')->get();
+        return view('foods/create')->with('food',$food)->with('categories', $categories);
     }
 
     /**
@@ -103,6 +106,19 @@ class FoodController extends Controller
     {
         $food = Foods::find($id);
         $parameters = $request->except(['_token']);
+
+        $validator = Validator::make($request->all(), [
+            'name' => 'required|unique:foods|max:255',
+            'slug' => 'max:255',
+            'weight' => 'required|boolean',
+            'sugar' => 'required|numeric',
+        ]);
+
+        if ($validator->fails()) {
+            return redirect()->route('food.create')
+                ->withErrors($validator)
+                ->withInput();
+        }
 
         if( empty($parameters['slug']) ){
             $parameters['slug'] = Str::slug($parameters['name']);
