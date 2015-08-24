@@ -47,6 +47,14 @@ Route::group(['prefix'=>'admin', 'before' => ['auth|admin']], function(){
         Route::get('category/{id}/edit', [ 'as' => 'category.edit', 'uses' => 'Admin\CategoryController@edit' ])->where('id', '[0-9]+');
         Route::post('category/{id}/update', [ 'as' => 'category.update', 'uses' => 'Admin\CategoryController@update' ])->where('id', '[0-9]+');
         Route::get('category/{id}/delete', [ 'as' => 'category.delete', 'uses' => 'Admin\CategoryController@destroy' ])->where('id', '[0-9]+');
+
+        // Users
+        Route::get('user', [ 'as' => 'user.index', 'uses' => 'Admin\UserController@index' ]);
+        Route::get('user/create', [ 'as' => 'user.create', 'uses' => 'Admin\UserController@create' ]);
+        Route::post('user', [ 'as' => 'user.store', 'uses' => 'Admin\UserController@store' ]);
+        Route::get('user/{id}/edit', [ 'as' => 'user.edit', 'uses' => 'Admin\UserController@edit' ])->where('id', '[0-9]+');
+        Route::post('user/{id}/update', [ 'as' => 'user.update', 'uses' => 'Admin\UserController@update' ])->where('id', '[0-9]+');
+        Route::get('user/{id}/delete', [ 'as' => 'user.delete', 'uses' => 'Admin\UserController@destroy' ])->where('id', '[0-9]+');
     }
 );
 
