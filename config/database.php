@@ -62,6 +62,7 @@ return [
             'collation' => 'utf8_unicode_ci',
             'prefix'    => env('DB_PREFIX', ''),
             'strict'    => false,
+            'unix_socket'   => env('DB_SOCKET', '/Applications/MAMP/tmp/mysql/mysql.sock'),
         ],
 
         'pgsql' => [
