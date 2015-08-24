@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Validator;
 
 class UsersController extends Controller
 {
@@ -24,7 +25,7 @@ class UsersController extends Controller
      */
     public function profile($id)
     {
-        if( Auth::check() && Auth::user()->id == $id ){
+        if( Auth::check() && Auth::user()->id == $id || Auth::check() && Auth::user()->roles == 'admin' ){
             $user = User::find($id);
             return view('users/profile')->with('user', $user);
         } else {
@@ -41,28 +42,39 @@ class UsersController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $category = Categories::find($id);
+        $user = User::find($id);
         $parameters = $request->except(['_token']);
+        //dd($request->all());
+        if(strlen($parameters['password']) == 0){
+            $validator = Validator::make($request->all(), [
+                'email' => 'required|email|unique:users,email,'.$id.'|max:100',
+                'corrective' => 'required',
+                'prandial' => 'required',
+            ]);
+        } else {
+            $validator = Validator::make($request->all(), [
+                'email' => 'required|email|unique:users,email,'.$id.'|max:100',
+                'corrective' => 'required',
+                'prandial' => 'required',
+                'password' => 'required|confirmed|min:6',
+            ]);
+        }
 
-        $validator = Validator::make($request->all(), [
-            'name' => 'required|unique:foods|max:255'
-        ]);
-
-        if ($validator->fails()) {
-            return redirect()->route('food.create')
+        if($validator->fails()) {
+            return redirect()->route('profile',['id' => $id])
                 ->withErrors($validator)
                 ->withInput();
         }
 
-        if( empty($parameters['slug']) ){
-            $parameters['slug'] = Str::slug($parameters['name']);
+        $user->email = $parameters['email'];
+        $user->corrective = $parameters['corrective'];
+        $user->prandial = $parameters['prandial'];
+
+        if(strlen($parameters['password']) != 0){
+            $user->password = bcrypt($parameters['password']);
         }
+        $user->save();
 
-        $category->name = $parameters['name'];
-        $category->slug = $parameters['slug'];
-
-        $category->save();
-
-        return redirect()->route('category.index')->with('success', 'Category was updated !');
+        return redirect()->route('profile',['id' => $id])->with('success', 'Your profile was updated !');
     }
 }

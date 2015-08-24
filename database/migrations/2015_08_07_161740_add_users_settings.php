@@ -15,6 +15,7 @@ class AddUsersSettings extends Migration
         Schema::table('users', function (Blueprint $table) {
             $table->decimal('corrective', 4, 2);
             $table->decimal('prandial', 4, 2);
+            $table->string('firstname');
         });
     }
 
@@ -28,6 +29,7 @@ class AddUsersSettings extends Migration
         Schema::table('users', function (Blueprint $table) {
             $table->dropColumn('corrective');
             $table->dropColumn('prandial');
+            $table->string('firstname');
         });
     }
 }

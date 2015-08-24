@@ -2,6 +2,11 @@
     <input type="hidden" name="_token" value="{{ csrf_token() }}">
 
     <div class="mdl-textfield mdl-js-textfield">
+        <input class="mdl-textfield__input" type="text" id="firstname" name="firstname" value="{{ old('firstname') }}"/>
+        <label class="mdl-textfield__label" for="firstname">Fisrt Name</label>
+    </div>
+
+    <div class="mdl-textfield mdl-js-textfield">
         <input class="mdl-textfield__input" type="text" id="name" name="name" value="{{ old('name') }}"/>
         <label class="mdl-textfield__label" for="name">Name</label>
     </div>

@@ -108,7 +108,7 @@ class FoodController extends Controller
         $parameters = $request->except(['_token']);
 
         $validator = Validator::make($request->all(), [
-            'name' => 'required|unique:foods|max:255',
+            'name' => 'required|unique:foods,name,'.$id.'|max:255',
             'slug' => 'max:255',
             'weight' => 'required|boolean',
             'sugar' => 'required|numeric',

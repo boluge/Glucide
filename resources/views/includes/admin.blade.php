@@ -5,7 +5,7 @@
 
     <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect user-menu" for="admin-menu-lower-right">
         <li class="mdl-menu__item">
-            <a href="{{ route('food.index') }}">
+            <a href="{{ route('user.index') }}">
                 Show all Users
             </a>
         </li>
