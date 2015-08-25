@@ -25,7 +25,7 @@ class UserController extends Controller
     {
         if( Auth::check() && Auth::user()->roles == 'admin' ){
             $users = User::all(['id', 'firstname', 'name', 'email', 'roles', 'created_at'])->sortBy('name');
-            return route('user.index')->with('users', $users);
+            return view('users/index')->with('users', $users);
         } else {
             abort(403, 'Unauthorized action.');
         }

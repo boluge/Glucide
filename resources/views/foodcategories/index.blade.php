@@ -5,13 +5,6 @@
 @endsection
 
 @section('content')
-    @if(Session::has('success'))
-        <div class="mdl-grid">
-            <div class="card-notice card-notice-success mdl-shadow--6dp mdl-cell mdl-cell--12-col mdl-cell--8-col-tablet">
-                {{ Session::get('success') }}
-            </div>
-        </div>
-    @endif
     <div class="mdl-grid relative-pos list-foods">
         <a href="{{ route('category.create') }}" class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--colored button-float-top-right">
             <i class="material-icons">add</i>

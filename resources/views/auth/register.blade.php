@@ -3,7 +3,7 @@
 
     <div class="mdl-textfield mdl-js-textfield">
         <input class="mdl-textfield__input" type="text" id="firstname" name="firstname" value="{{ old('firstname') }}"/>
-        <label class="mdl-textfield__label" for="firstname">Fisrt Name</label>
+        <label class="mdl-textfield__label" for="firstname">First Name</label>
     </div>
 
     <div class="mdl-textfield mdl-js-textfield">

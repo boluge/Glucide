@@ -5,17 +5,6 @@
 @endsection
 
 @section('content')
-    @if (count($errors) > 0)
-        <div class="mdl-grid">
-            <div class="card-notice card-notice-error mdl-shadow--6dp mdl-cell mdl-cell--12-col mdl-cell--8-col-tablet">
-                <ul>
-                    @foreach ($errors->all() as $error)
-                        <li>{{ $error }}</li>
-                    @endforeach
-                </ul>
-            </div>
-        </div>
-    @endif
     <div class="mdl-grid">
         <div class="mdl-card mdl-shadow--2dp mdl-cell mdl-cell--4-col mdl-cell--4-col-tablet">
             <div class="mdl-card__title">
