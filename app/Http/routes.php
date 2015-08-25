@@ -61,3 +61,11 @@ Route::group(['prefix'=>'admin', 'before' => ['auth|admin']], function(){
 // User Profile & Settings
 Route::get('user/{id}/profile', ['as' => 'profile', 'uses' => 'UserController@profile'])->where('id', '[0-9]+');
 Route::post('user/{id}/update', ['as' => 'profile.update', 'uses' => 'UserController@update' ])->where('id', '[0-9]+');
+
+// Meals
+Route::get('meal', [ 'as' => 'meal.index', 'uses' => 'MealController@index' ]);
+Route::get('meal/create', [ 'as' => 'meal.create', 'uses' => 'MealController@create' ]);
+Route::post('meal', [ 'as' => 'meal.store', 'uses' => 'MealController@store' ]);
+Route::get('meal/{id}/edit', [ 'as' => 'meal.edit', 'uses' => 'MealController@edit' ])->where('id', '[0-9]+');
+Route::post('meal/{id}/update', [ 'as' => 'meal.update', 'uses' => 'MealController@update' ])->where('id', '[0-9]+');
+Route::get('meal/{id}/delete', [ 'as' => 'meal.delete', 'uses' => 'MealController@destroy' ])->where('id', '[0-9]+');

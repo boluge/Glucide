@@ -13,11 +13,37 @@ class CategoryTableSeeder extends Seeder
      */
     public function run()
     {
+        function csv_to_array($filename='', $delimiter=',')
+        {
+            if(!file_exists($filename) || !is_readable($filename))
+                return FALSE;
+
+            $header = NULL;
+            $data = array();
+            if (($handle = fopen($filename, 'r')) !== FALSE)
+            {
+                while (($row = fgetcsv($handle, 1000, $delimiter)) !== FALSE)
+                {
+                    if(!$header)
+                        $header = $row;
+                    else
+                        $data[] = array_combine($header, $row);
+                }
+                fclose($handle);
+            }
+            return $data;
+        }
+
+        $csvFile = public_path().'/csvs/categories.csv';
+
+        $datas = csv_to_array($csvFile);
+
         DB::table('categories')->delete();
-        Categories::create([
-            ['id' => '1' ,'name' => 'Céréales', 'slug' => 'cereales'],
-            ['id' => '2' ,'name' => 'Fruits', 'slug' => 'fruits']
-        ]);
+
+        foreach( $datas as $data ){
+            Categories::create( $data );
+        }
+
 
     }
 }

@@ -57,12 +57,19 @@
                     <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label ">
                         <input class="mdl-textfield__input" type="number" step="0.25" min="0" id="corrective" name="corrective" value="{{ $user->corrective }}"/>
                         <label class="mdl-textfield__label" for="corrective">Corrective</label>
+                        <div class="mdl-tooltip" for="corrective">
+                            Unités d'insuline pour<br/>déscendre de 0.5g/l (1U)
+                        </div>
                     </div>
 
                     <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label ">
                         <input class="mdl-textfield__input" type="number" step="0.25" min="0" id="prandial" name="prandial" value="{{ $user->prandial }}"/>
                         <label class="mdl-textfield__label" for="prandial">Prandial</label>
+                        <div class="mdl-tooltip" for="prandial">
+                            Unités d'insuline pour<br/>de 10gr de glucides (2U)
+                        </div>
                     </div>
+
                     <button type="submit" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">
                         Update my settings
                     </button>
