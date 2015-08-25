@@ -59,5 +59,5 @@ Route::group(['prefix'=>'admin', 'before' => ['auth|admin']], function(){
 );
 
 // User Profile & Settings
-Route::get('user/{id}/profile', ['as' => 'profile', 'uses' => 'UsersController@profile'])->where('id', '[0-9]+');
-Route::post('user/{id}/update', ['as' => 'profile.update', 'uses' => 'UsersController@update' ])->where('id', '[0-9]+');
+Route::get('user/{id}/profile', ['as' => 'profile', 'uses' => 'UserController@profile'])->where('id', '[0-9]+');
+Route::post('user/{id}/update', ['as' => 'profile.update', 'uses' => 'UserController@update' ])->where('id', '[0-9]+');
