@@ -144,7 +144,6 @@ return [
         Glucide\Providers\EventServiceProvider::class,
         Glucide\Providers\RouteServiceProvider::class,
 
-        Bestmomo\Scafold\ScafoldServiceProvider::class,
         Barryvdh\Debugbar\ServiceProvider::class,
 
     ],
