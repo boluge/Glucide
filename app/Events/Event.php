@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Events;
+namespace Glucide\Events;
 
 abstract class Event
 {

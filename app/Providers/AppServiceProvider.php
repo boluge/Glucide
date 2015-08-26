@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Providers;
+namespace Glucide\Providers;
 
 use Illuminate\Support\ServiceProvider;
 

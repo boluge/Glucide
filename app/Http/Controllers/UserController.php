@@ -1,12 +1,12 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace Glucide\Http\Controllers;
 
-use App\User;
+use Glucide\User;
 use Illuminate\Http\Request;
 
-use App\Http\Requests;
-use App\Http\Controllers\Controller;
+use Glucide\Http\Requests;
+use Glucide\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
 

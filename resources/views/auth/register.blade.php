@@ -17,13 +17,13 @@
     </div>
 
     <div class="mdl-textfield mdl-js-textfield">
-        <input class="mdl-textfield__input" type="password" id="password" name="password" value="{{ old('email') }}"/>
+        <input class="mdl-textfield__input" type="password" id="password" name="password" />
         <label class="mdl-textfield__label" for="password">Password</label>
     </div>
 
     <div class="mdl-textfield mdl-js-textfield">
-        <input class="mdl-textfield__input" type="password" id="password" name="password_confirmation" value="{{ old('email') }}"/>
-        <label class="mdl-textfield__label" for="password">Password</label>
+        <input class="mdl-textfield__input" type="password" id="password_confirmation" name="password_confirmation" />
+        <label class="mdl-textfield__label" for="password_confirmation">Confirm Password</label>
     </div>
 
     <div class="mdl-textfield">

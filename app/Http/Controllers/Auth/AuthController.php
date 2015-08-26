@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Controllers\Auth;
+namespace Glucide\Http\Controllers\Auth;
 
-use App\User;
+use Glucide\User;
 use Validator;
-use App\Http\Controllers\Controller;
+use Glucide\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\ThrottlesLogins;
 use Illuminate\Foundation\Auth\AuthenticatesAndRegistersUsers;
 

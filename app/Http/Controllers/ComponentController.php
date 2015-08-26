@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace Glucide\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-use App\Http\Requests;
-use App\Http\Controllers\Controller;
+use Glucide\Http\Requests;
+use Glucide\Http\Controllers\Controller;
 
 class ComponentController extends Controller
 {

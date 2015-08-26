@@ -35,7 +35,7 @@
 
                     <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label ">
                         <input class="mdl-textfield__input" type="password" id="password_confirmation" name="password_confirmation" />
-                        <label class="mdl-textfield__label" for="password">Confirm Password</label>
+                        <label class="mdl-textfield__label" for="password_confirmation">Confirm Password</label>
                     </div>
 
 

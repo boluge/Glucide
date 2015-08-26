@@ -140,9 +140,9 @@ return [
         /*
          * Application Service Providers...
          */
-        App\Providers\AppServiceProvider::class,
-        App\Providers\EventServiceProvider::class,
-        App\Providers\RouteServiceProvider::class,
+        Glucide\Providers\AppServiceProvider::class,
+        Glucide\Providers\EventServiceProvider::class,
+        Glucide\Providers\RouteServiceProvider::class,
 
         Bestmomo\Scafold\ScafoldServiceProvider::class,
         Barryvdh\Debugbar\ServiceProvider::class,
