@@ -145,7 +145,7 @@ return [
         Glucide\Providers\RouteServiceProvider::class,
 
         Barryvdh\Debugbar\ServiceProvider::class,
-
+        Gbrock\Table\Providers\TableServiceProvider::class,
     ],
 
     /*
@@ -194,7 +194,8 @@ return [
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View'      => Illuminate\Support\Facades\View::class,
 
-        'Debugbar' => Barryvdh\Debugbar\Facade::class,
+        'Debugbar'  => Barryvdh\Debugbar\Facade::class,
+        'Table'     => Gbrock\Table\Facades\Table::class,
 
     ],
 

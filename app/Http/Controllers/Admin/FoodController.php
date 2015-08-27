@@ -2,6 +2,7 @@
 
 namespace Glucide\Http\Controllers\Admin;
 
+use Gbrock\Table\Facades\Table;
 use Glucide\Foods;
 use Illuminate\Http\Request;
 
@@ -26,10 +27,36 @@ class FoodController extends Controller
      */
     public function index()
     {
-        $foods = Foods::all(['id', 'name', 'category_id', 'weight', 'sugar'])->sortBy('name');
-        //$foods = DB::table('foods')->paginate(2);
-        //$foods = $foods->shortby('name');
-        //$foods = $foods->paginate(2);
+        /*$users = User::sorted()->paginate(20);
+        $users = Table::create($users, ['id','firstname', 'name', 'email']);
+        $users->addColumn('roles', 'Roles', function($model) {
+            if($model->roles == 'admin'){
+                $icon = "<i class='material-icons'>build</i>";
+            } else {
+                $icon = "<i class='material-icons'>face</i>";
+            }
+            return $icon;
+        });
+        $users->addColumn('created_at', 'Depuis', function($model) {
+            return $model->created_at->format('d M Y - H:i');
+        });
+        $users->addColumn('id', 'Editer', function($model) {
+            $url = route('profile', ['id' => $model->id]);
+            echo "<a href='$url'><i class='material-icons'>create</i></a>";
+        });*/
+
+
+        $foods = Foods::sorted()->paginate(20);
+        /*$foods = DB::table('foods')
+            ->leftJoin('categories', 'categories.id', '=', 'foods.category_id')
+            ->select('categories.name', 'foods.*')
+            ->get();*/
+            //
+            //->get();
+        //dd($foods);
+        //->sorted()->paginate(20);
+        $foods = Table::create($foods, ['id', 'name', 'category_id', 'weight', 'sugar']);
+
         return view('foods/index')->with('foods', $foods);
     }
 

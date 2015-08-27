@@ -2,6 +2,7 @@
 
 namespace Glucide;
 
+use Gbrock\Table\Traits\Sortable;
 use Illuminate\Auth\Authenticatable;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Auth\Passwords\CanResetPassword;
@@ -32,4 +33,12 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
      * @var array
      */
     protected $hidden = ['password', 'remember_token'];
+
+    use Sortable;
+    /**
+     * The attributes which may be used for sorting dynamically.
+     *
+     * @var array
+     */
+    protected $sortable = ['firstname', 'name', 'email', 'roles', 'created_at'];
 }

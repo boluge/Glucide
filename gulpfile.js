@@ -81,7 +81,7 @@ gulp.task( 'uglify', ['jshint'],function() {
 
     gulp.task('default', ['sass', 'uglify'], function() {
         browserSync.init({
-            proxy: "localhost/laravel/glucide/public"
+            proxy: "glucide.io"
         });
 
         gulp.watch("./public/css/sass/**/*.scss", ['sass']);

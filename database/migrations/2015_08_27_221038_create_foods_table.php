@@ -14,9 +14,10 @@ class CreateFoodsTable extends Migration
     {
         Schema::create('foods', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('name');
+            $table->string('name')->unique();
             $table->string('slug');
-            $table->integer('category_id');
+            $table->integer('category_id')->unsigned();
+            $table->foreign('category_id')->references('id')->on('categories');
             $table->boolean('weight');
             $table->decimal('sugar', 5, 2);
             $table->timestamps();
