@@ -82,6 +82,7 @@ class FoodController extends Controller
         $validator = Validator::make($request->all(), [
             'name' => 'required|unique:foods|max:255',
             'slug' => 'max:255',
+            'category_id' => 'different:0',
             'weight' => 'required|boolean',
             'sugar' => 'required|numeric',
         ]);
@@ -137,6 +138,7 @@ class FoodController extends Controller
         $validator = Validator::make($request->all(), [
             'name' => 'required|unique:foods,name,'.$id.'|max:255',
             'slug' => 'max:255',
+            'category_id' => 'different:0',
             'weight' => 'required|boolean',
             'sugar' => 'required|numeric',
         ]);

@@ -14,12 +14,12 @@
                 <form role="form" method="POST" action="{{ route('auth.postlogin') }}">
                     <input type="hidden" name="_token" value="{{ csrf_token() }}">
 
-                    <div class="mdl-textfield mdl-js-textfield">
+                    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
                         <input class="mdl-textfield__input" type="email" id="email" name="email" value="{{ old('email') }}"/>
                         <label class="mdl-textfield__label" for="email">E-Mail</label>
                     </div>
 
-                    <div class="mdl-textfield mdl-js-textfield">
+                    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
                         <input class="mdl-textfield__input" type="password" id="password" name="password" />
                         <label class="mdl-textfield__label" for="password">Password</label>
                     </div>

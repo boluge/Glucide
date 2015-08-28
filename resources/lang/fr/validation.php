@@ -88,8 +88,8 @@ return [
     */
 
     'custom' => [
-        'attribute-name' => [
-            'rule-name' => 'custom-message',
+        'category_id' => [
+            "different"=> "Le champ Food Category doit être renseigné.",
         ],
     ],
 
